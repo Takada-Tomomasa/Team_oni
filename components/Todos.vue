@@ -1,8 +1,7 @@
 <template>
   <div class="oni-todos">
     <h1>明後日までに学びたいこと</h1>
-    <h3>{{ cdata }}</h3>
-    <!-- <input v-model="number"> -->
+    <h3>{{ commentNumber }}</h3>
     <ul>
       <li>アプリのフォルダ構成について(何をするときにどこをいじるか？)</li>
       <li>Vueの基本の確認(scriptの部分は全部tsで書く)</li>
@@ -23,7 +22,7 @@
 export default {
   name: 'Todos',
   props: {
-    cdata: Object
+    commentNumber: String
   }
 }
 </script>

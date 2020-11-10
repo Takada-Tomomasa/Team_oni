@@ -4,9 +4,13 @@
       アプリのメインページ
     </div>
     <p>ここに色々実験していこう！</p>
+    <p>{{ message }}</p>
     <input v-model="commentNumber">
+    <button @click="findBody">
+      検索
+    </button>
     <p>{{ commentData[commentNumber] }}</p>
-    <Todos :commentData="cdata" />
+    <Todos :comment-number="commentNumber" />
     <!-- <Generic /> -->
   </div>
 </template>
@@ -22,14 +26,19 @@ export default {
   data () {
     return {
       commentData: [],
-      commentNumber: null
+      commentNumber: null,
+      message: ''
     }
   },
-
   mounted () {
     fetch('https://jsonplaceholder.typicode.com/comments')
       .then(response => response.json())
       .then(json => (this.commentData = json))
+  },
+  methods: {
+    findBody () {
+      this.$router.push('./findBodyPage?commentNumber=' + this.commentNumber)
+    }
   }
 }
 </script>
